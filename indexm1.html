@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umine - Seguridad Psicológica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --umine-navy: #1d2a4e;
+            --umine-blue: #00ade1;
+            --umine-yellow: #ffcd22;
+            --umine-green: #80b122;
+            --umine-red: #da3728;
+            --umine-purple: #575e9a;
+            --umine-grey: #ececec;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--umine-navy);
+        }
+
+        .bg-umine-navy { background-color: var(--umine-navy); }
+        .bg-umine-blue { background-color: var(--umine-blue); }
+        .bg-umine-yellow { background-color: var(--umine-yellow); }
+        .bg-umine-green { background-color: var(--umine-green); }
+        .bg-umine-red { background-color: var(--umine-red); }
+        
+        .text-umine-navy { color: var(--umine-navy); }
+        .text-umine-blue { color: var(--umine-blue); }
+
+        .card-stage {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-left: 6px solid transparent;
+        }
+
+        .card-stage:hover {
+            transform: translateX(10px);
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .active-stage-1 { border-left-color: var(--umine-blue); }
+        .active-stage-2 { border-left-color: var(--umine-yellow); }
+        .active-stage-3 { border-left-color: var(--umine-green); }
+        .active-stage-4 { border-left-color: var(--umine-red); }
+
+        .btn-umine {
+            background-color: var(--umine-navy);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 600;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-umine:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .circle-num {
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .quiz-option {
+            border: 2px solid var(--umine-grey);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--umine-blue);
+            background-color: #f0faff;
+        }
+
+        .quiz-option.correct {
+            border-color: var(--umine-green);
+            background-color: #f3f9e9;
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--umine-red);
+            background-color: #fff5f5;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+            <div>
+                <span class="text-sm font-bold tracking-widest text-umine-blue uppercase">Actividad SCORM 1.4</span>
+                <h1 class="text-3xl md:text-4xl font-bold mt-2">Seguridad <span class="text-umine-blue">Psicológica</span></h1>
+            </div>
+            <div class="bg-umine-navy text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                Las 4 Etapas
+            </div>
+        </header>
+
+        <!-- Intro Section -->
+        <section class="mb-12 bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm leading-relaxed">
+            <p class="text-lg">
+                La seguridad psicológica no aparece de golpe. Se construye por etapas, a medida que las personas perciben que es seguro <strong>estar, aprender, aportar y cuestionar.</strong>
+            </p>
+        </section>
+
+        <!-- Interactive Stages -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="space-y-4">
+                <div onclick="showStage(1)" id="btn-1" class="card-stage bg-gray-50 p-6 rounded-xl active-stage-1 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="circle-num bg-umine-blue">1</div>
+                        <h3 class="font-bold text-xl">Seguridad de Inclusión</h3>
+                    </div>
+                </div>
+
+                <div onclick="showStage(2)" id="btn-2" class="card-stage bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="circle-num bg-umine-yellow text-umine-navy">2</div>
+                        <h3 class="font-bold text-xl">Seguridad para Aprender</h3>
+                    </div>
+                </div>
+
+                <div onclick="showStage(3)" id="btn-3" class="card-stage bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="circle-num bg-umine-green">3</div>
+                        <h3 class="font-bold text-xl">Seguridad para Contribuir</h3>
+                    </div>
+                </div>
+
+                <div onclick="showStage(4)" id="btn-4" class="card-stage bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="circle-num bg-umine-red">4</div>
+                        <h3 class="font-bold text-xl">Seguridad para Desafiar</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Display -->
+            <div id="display-content" class="bg-white p-8 rounded-2xl border-2 border-gray-100 shadow-lg flex flex-col justify-center min-h-[350px]">
+                <div id="content-inner">
+                    <h2 id="stage-title" class="text-2xl font-bold mb-4 text-umine-blue">Seguridad de inclusión</h2>
+                    <p id="stage-desc" class="text-gray-600 mb-6 italic">En esta primera etapa, las personas sienten que pertenecen. Pueden participar sin miedo a ser ignoradas, ridiculizadas o excluidas.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-umine-blue">
+                        <h4 class="font-bold mb-2 text-umine-navy">Se nota cuando:</h4>
+                        <p id="stage-note">Las personas participan sin retraerse y no necesitan “probar” que merecen estar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini Exercise Section -->
+        <section class="mb-16 scroll-mt-10" id="exercise-section">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold">🎯 Ejercicio: Ponlo en práctica</h2>
+                <p class="text-gray-500 italic">Identifica la etapa de seguridad psicológica en cada caso.</p>
+            </div>
+
+            <div id="exercise-card" class="bg-white p-8 rounded-3xl border border-gray-200 shadow-xl max-w-2xl mx-auto min-h-[450px] flex items-center">
+                <div id="quiz-content" class="w-full">
+                    <div id="quiz-view">
+                        <p id="quiz-question" class="text-xl font-semibold mb-8 text-center text-umine-navy">"Un miembro del equipo propone una idea que contradice la decisión del líder para mejorar el proceso."</p>
+                        
+                        <div class="grid gap-3">
+                            <div onclick="checkAnswer(1)" class="quiz-option p-4 rounded-xl font-medium">1. Seguridad de Inclusión</div>
+                            <div onclick="checkAnswer(2)" class="quiz-option p-4 rounded-xl font-medium">2. Seguridad para Aprender</div>
+                            <div onclick="checkAnswer(3)" class="quiz-option p-4 rounded-xl font-medium">3. Seguridad para Contribuir</div>
+                            <div onclick="checkAnswer(4)" class="quiz-option p-4 rounded-xl font-medium">4. Seguridad para Desafiar</div>
+                        </div>
+
+                        <div id="quiz-feedback" class="mt-6 p-4 rounded-lg hidden text-center font-bold"></div>
+                        
+                        <div class="text-center mt-8">
+                            <button onclick="nextQuestion()" id="next-btn" class="btn-umine hidden">Siguiente caso</button>
+                        </div>
+                    </div>
+
+                    <!-- Final Message View (Hidden initially) -->
+                    <div id="final-view" class="hidden text-center fade-in">
+                        <div class="mb-6 flex justify-center">
+                            <div class="w-20 h-20 bg-umine-green rounded-full flex items-center justify-center text-white text-4xl">
+                                ✓
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-umine-navy mb-4">¡Actividad completada!</h2>
+                        <p class="text-gray-600 text-lg mb-8">Has identificado correctamente las dinámicas de las cuatro etapas de la seguridad psicológica.</p>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 mb-8">
+                            <p class="text-umine-navy font-semibold">Ya puedes continuar con el siguiente recurso del curso.</p>
+                        </div>
+                        <p class="text-sm text-gray-400">Umine Learning Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checklist Section -->
+        <section class="bg-umine-navy text-white p-8 md:p-12 rounded-3xl mb-12 relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Checklist para el día a día</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/10 p-5 rounded-xl border border-white/5 backdrop-blur-sm">
+                        <p class="font-medium">¿Todas las personas se sienten incluidas?</p>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-xl border border-white/5 backdrop-blur-sm">
+                        <p class="font-medium">¿Es seguro preguntar si no entendemos algo?</p>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-xl border border-white/5 backdrop-blur-sm">
+                        <p class="font-medium">¿Las personas pueden aportar sin exponerse?</p>
+                    </div>
+                    <div class="bg-white/10 p-5 rounded-xl border border-white/5 backdrop-blur-sm">
+                        <p class="font-medium">¿Se puede cuestionar sin consecuencias negativas?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-umine-blue/20 rounded-full"></div>
+        </section>
+
+        <footer class="text-center pb-12 opacity-40 text-sm">
+            <p>© Umine - Las Cuatro Etapas de la Seguridad Psicológica</p>
+        </footer>
+    </div>
+
+    <script>
+        const stages = {
+            1: { title: "Seguridad de inclusión", desc: "Sienten que pertenecen. Pueden participar sin miedo a ser ignoradas o excluidas.", note: "Las personas participan sin retraerse.", color: "#00ade1", bgColor: "#ebf8ff" },
+            2: { title: "Seguridad para aprender", desc: "Se habla de dudas y errores. Decir 'no sé' deja de ser riesgoso.", note: "Las preguntas no se esconden.", color: "#ffcd22", bgColor: "#fffdf0" },
+            3: { title: "Seguridad para contribuir", desc: "Aportar valor real. Las ideas y capacidades son tomadas en cuenta.", note: "La gente toma iniciativa más allá de lo mínimo.", color: "#80b122", bgColor: "#f3f9e9" },
+            4: { title: "Seguridad para desafiar", desc: "Cuestionar decisiones o procesos sin temor a represalias.", note: "Mejora continua e innovación real.", color: "#da3728", bgColor: "#fff5f5" }
+        };
+
+        function showStage(num) {
+            const stage = stages[num];
+            const inner = document.getElementById('content-inner');
+            const display = document.getElementById('display-content');
+            inner.style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('stage-title').innerText = stage.title;
+                document.getElementById('stage-title').style.color = stage.color;
+                document.getElementById('stage-desc').innerText = stage.desc;
+                document.getElementById('stage-note').innerText = stage.note;
+                display.style.backgroundColor = stage.bgColor;
+                display.style.borderColor = stage.color;
+                for(let i=1; i<=4; i++) {
+                    const btn = document.getElementById(`btn-${i}`);
+                    btn.classList.remove('active-stage-1', 'active-stage-2', 'active-stage-3', 'active-stage-4', 'bg-white', 'shadow-md');
+                    if(i === num) btn.classList.add(`active-stage-${i}`, 'bg-white', 'shadow-md');
+                }
+                inner.style.opacity = '1';
+            }, 200);
+        }
+
+        // Quiz Logic
+        const quizData = [
+            { q: "Un nuevo integrante se une a la videollamada y todos lo saludan e integran a la charla informal inicial.", a: 1 },
+            { q: "En medio de una explicación técnica, un junior levanta la mano para decir que no entiende un concepto básico.", a: 2 },
+            { q: "Un colaborador sugiere un cambio en la herramienta de gestión que ahorra 2 horas semanales al equipo.", a: 3 },
+            { q: "El equipo debate abiertamente por qué la estrategia actual del proyecto no va a funcionar, sugiriendo un cambio radical.", a: 4 }
+        ];
+
+        let currentQ = 0;
+        let answered = false;
+
+        function checkAnswer(selected) {
+            if(answered) return;
+            answered = true;
+            const correct = quizData[currentQ].a;
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('quiz-feedback');
+            
+            options[selected-1].classList.add(selected === correct ? 'correct' : 'incorrect');
+            if(selected !== correct) options[correct-1].classList.add('correct');
+
+            feedback.innerText = selected === correct ? "¡Correcto! Excelente identificación." : "Casi... Esa situación corresponde a otra etapa.";
+            feedback.style.color = selected === correct ? "var(--umine-green)" : "var(--umine-red)";
+            feedback.classList.remove('hidden');
+            
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.innerText = currentQ === quizData.length - 1 ? "Finalizar actividad" : "Siguiente caso";
+            nextBtn.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (currentQ === quizData.length - 1) {
+                showFinalView();
+                return;
+            }
+            currentQ++;
+            answered = false;
+            document.getElementById('quiz-question').innerText = `"${quizData[currentQ].q}"`;
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        function showFinalView() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('final-view').classList.remove('hidden');
+            document.getElementById('exercise-card').classList.add('border-umine-green');
+        }
+    </script>
+</body>
+</html>
