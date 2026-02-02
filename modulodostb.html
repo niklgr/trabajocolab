@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umine - Coordinación sin Fricción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --umine-navy: #1d2a4e;
+            --umine-blue: #00ade1;
+            --umine-yellow: #ffcd22;
+            --umine-green: #80b122;
+            --umine-red: #da3728;
+            --umine-purple: #575e9a;
+            --umine-grey: #ececec;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--umine-navy);
+        }
+
+        .bg-umine-navy { background-color: var(--umine-navy); }
+        .bg-umine-blue { background-color: var(--umine-blue); }
+        .bg-umine-yellow { background-color: var(--umine-yellow); }
+        .bg-umine-green { background-color: var(--umine-green); }
+        .bg-umine-red { background-color: var(--umine-red); }
+        
+        .text-umine-navy { color: var(--umine-navy); }
+        .text-umine-blue { color: var(--umine-blue); }
+
+        .step-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.5;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .step-card.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .btn-umine {
+            background-color: var(--umine-navy);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-umine:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-umine:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .hei-tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-right: 4px;
+        }
+
+        .avr-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+            <div>
+                <span class="text-sm font-bold tracking-widest text-umine-blue uppercase">Habilidades de Comunicación</span>
+                <h1 class="text-3xl md:text-4xl font-bold mt-2">Coordinar <span class="text-umine-blue">sin Fricción</span></h1>
+            </div>
+            <div class="bg-umine-navy text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                Hablar y escuchar como sistema
+            </div>
+        </header>
+
+        <!-- Intro -->
+        <p class="text-lg mb-10 border-l-4 border-umine-yellow pl-4 italic text-gray-700">
+            Los conflictos muchas veces aparecen por cómo se dicen las cosas y cómo se escuchan las respuestas. Trabajemos ambos lados de la comunicación empática.
+        </p>
+
+        <!-- Step 1 -->
+        <div id="step-1" class="step-card active bg-white p-8 rounded-3xl shadow-lg border border-gray-100 mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-umine-blue text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Paso 1</span>
+                <h2 class="text-2xl font-bold">Detectar la mezcla reactiva</h2>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-2xl mb-6 text-xl text-center border-2 border-dashed border-gray-200">
+                “Llegaste tarde otra vez. <span class="underline decoration-umine-purple">No te importa el proyecto</span> y <span class="underline decoration-umine-red">me haces sentir que no valoras mi tiempo</span>.”
+            </div>
+
+            <p class="mb-6">Esta frase mezcla tres elementos que suelen activar defensas:</p>
+            
+            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                <div class="p-4 bg-blue-50 rounded-xl border-b-4 border-umine-blue">
+                    <p class="text-xs uppercase font-bold text-umine-blue mb-1">Hecho</p>
+                    <p class="font-medium">Llegar tarde</p>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-xl border-b-4 border-umine-purple">
+                    <p class="text-xs uppercase font-bold text-umine-purple mb-1">Interpretación</p>
+                    <p class="font-medium">“No te importa”</p>
+                </div>
+                <div class="p-4 bg-red-50 rounded-xl border-b-4 border-umine-red">
+                    <p class="text-xs uppercase font-bold text-umine-red mb-1">Emoción</p>
+                    <p class="font-medium">“Me siento desvalorizado”</p>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button onclick="nextStep(2)" class="btn-umine">Siguiente Paso: Separar elementos</button>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="step-2" class="step-card bg-white p-8 rounded-3xl shadow-lg border border-gray-100 mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-umine-purple text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Paso 2</span>
+                <h2 class="text-2xl font-bold">Separar para expresarse (HEI)</h2>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <div class="p-5 bg-white border-2 border-umine-blue rounded-2xl">
+                    <span class="hei-tag bg-umine-blue text-white">Hecho</span>
+                    “He notado que en las últimas tres reuniones llegaste unos minutos tarde.”
+                </div>
+                <div class="p-5 bg-white border-2 border-umine-red rounded-2xl">
+                    <span class="hei-tag bg-umine-red text-white">Emoción</span>
+                    “Me preocupa porque tu aporte es importante para avanzar juntos.”
+                </div>
+                <div class="p-5 bg-white border-2 border-umine-purple rounded-2xl">
+                    <span class="hei-tag bg-umine-purple text-white">Interpretación</span>
+                    “Interpreto que quizá estás con mucha carga o que el horario no te está funcionando bien. ¿Hay algo que podamos ajustar?”
+                </div>
+            </div>
+
+            <p class="bg-gray-50 p-4 rounded-xl text-sm italic mb-8">
+                Separar los elementos no suaviza el mensaje. Lo vuelve más claro y más fácil de abordar.
+            </p>
+
+            <div class="text-right">
+                <button onclick="nextStep(3)" class="btn-umine">Siguiente Paso: Escuchar (AVR)</button>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="step-3" class="step-card bg-white p-8 rounded-3xl shadow-lg border border-gray-100 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-umine-green text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Paso 3</span>
+                <h2 class="text-2xl font-bold">Escuchar (AVR)</h2>
+            </div>
+            
+            <p class="mb-6 text-gray-600">Imagina que la otra persona responde: <i>“Sí, he llegado tarde porque estoy cerrando otro proyecto y se me están cruzando los horarios.”</i></p>
+
+            <div class="space-y-6 mb-10">
+                <!-- A -->
+                <div class="flex gap-4 items-start">
+                    <div class="avr-badge bg-umine-navy">A</div>
+                    <div>
+                        <h4 class="font-bold">Atención plena</h4>
+                        <p class="text-sm text-gray-600">Escuchas sin interrumpir ni preparar tu respuesta. Dejas que la otra persona termine.</p>
+                    </div>
+                </div>
+                <!-- V -->
+                <div class="flex gap-4 items-start">
+                    <div class="avr-badge bg-umine-blue">V</div>
+                    <div>
+                        <h4 class="font-bold">Verificación</h4>
+                        <p class="text-sm text-gray-600 italic">“Si te entendí bien, estás con dos proyectos superpuestos y eso te está complicando llegar a tiempo.”</p>
+                    </div>
+                </div>
+                <!-- R -->
+                <div class="flex gap-4 items-start">
+                    <div class="avr-badge bg-umine-green">R</div>
+                    <div>
+                        <h4 class="font-bold">Respuesta calibrada</h4>
+                        <p class="text-sm text-gray-600">“Gracias por aclararlo. Veamos cómo ajustar horarios o prioridades para que no se vuelva una carga.”</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button onclick="nextStep(4)" class="btn-umine">Finalizar Integración</button>
+            </div>
+        </div>
+
+        <!-- Step 4 / Final -->
+        <div id="step-4" class="step-card bg-umine-navy text-white p-10 rounded-[3rem] shadow-2xl mb-12 text-center relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold mb-8">Integración: Un solo sistema</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-10 text-left">
+                    <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                        <h3 class="text-umine-blue font-bold text-xl mb-3">HEI</h3>
+                        <p class="text-gray-300">Ordena cómo <strong>expresas</strong> lo que pasa con claridad.</p>
+                    </div>
+                    <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                        <h3 class="text-umine-green font-bold text-xl mb-3">AVR</h3>
+                        <p class="text-gray-300">Cuida cómo <strong>recibes</strong> lo que el otro trae.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white/5 rounded-2xl border border-dashed border-white/20">
+                    <p class="text-xl font-medium">¡Has terminado la actividad!</p>
+                    <p class="text-gray-400 mt-2">Estas herramientas hacen que las conversaciones difíciles sean más humanas y fáciles de resolver.</p>
+                </div>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute -left-20 -top-20 w-64 h-64 bg-umine-blue/10 rounded-full"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function nextStep(step) {
+            const currentStep = step - 1;
+            
+            // Deactivate current
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            
+            // Activate new
+            const nextEl = document.getElementById(`step-${step}`);
+            nextEl.classList.add('active');
+            
+            // Scroll to it
+            setTimeout(() => {
+                nextEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
