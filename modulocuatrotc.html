@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umine - RAPID Redárquico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --umine-navy: #1d2a4e;
+            --umine-blue: #00ade1;
+            --umine-yellow: #ffcd22;
+            --umine-green: #80b122;
+            --umine-red: #da3728;
+            --umine-purple: #575e9a;
+            --umine-grey: #ececec;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--umine-navy);
+            scroll-behavior: smooth;
+        }
+
+        .bg-umine-navy { background-color: var(--umine-navy); }
+        .bg-umine-blue { background-color: var(--umine-blue); }
+        .bg-umine-yellow { background-color: var(--umine-yellow); }
+        .bg-umine-green { background-color: var(--umine-green); }
+        .bg-umine-red { background-color: var(--umine-red); }
+        
+        .text-umine-blue { color: var(--umine-blue); }
+        .text-umine-navy { color: var(--umine-navy); }
+
+        .step-container {
+            transition: all 0.5s ease;
+        }
+
+        .hidden-step {
+            display: none;
+            opacity: 0;
+        }
+
+        .visible-step {
+            display: block;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rapid-card {
+            border-left: 6px solid transparent;
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .rapid-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-umine {
+            background-color: var(--umine-navy);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-umine:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .check-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .check-box:hover {
+            background: #f0f0f0;
+        }
+
+        .role-letter {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: white;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+            <div>
+                <span class="text-sm font-bold tracking-widest text-umine-blue uppercase">Gobernanza Redárquica</span>
+                <h1 class="text-3xl md:text-4xl font-bold mt-2">RAPID en clave <span class="text-umine-blue">redárquica</span></h1>
+            </div>
+            <div class="bg-umine-navy text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                Decidir sin volver al control
+            </div>
+        </header>
+
+        <!-- Intro -->
+        <section class="mb-12">
+            <div class="bg-gray-50 p-6 rounded-2xl border-l-4 border-umine-yellow">
+                <p class="text-gray-700 leading-relaxed">
+                    La redarquía no elimina la jerarquía; redistribuye la influencia operativa para que las decisiones se tomen donde está el mejor entendimiento del problema. Para esto, el marco <strong>RAPID</strong> es fundamental para evitar la parálisis.
+                </p>
+            </div>
+        </section>
+
+        <!-- Step 1: Definition -->
+        <div id="step-1" class="step-container mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-umine-blue">●</span> RAPID: Qué rol cumple cada persona
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="rapid-card" style="border-color: var(--umine-blue);">
+                    <div class="flex gap-4">
+                        <div class="role-letter bg-umine-blue">R</div>
+                        <div>
+                            <h4 class="font-bold">Recommend (Recomendar)</h4>
+                            <p class="text-sm text-gray-600">Quien arma la propuesta inicial. No decide, pero ordena el problema y las opciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rapid-card" style="border-color: var(--umine-red);">
+                    <div class="flex gap-4">
+                        <div class="role-letter bg-umine-red">A</div>
+                        <div>
+                            <h4 class="font-bold">Agree (Acordar)</h4>
+                            <p class="text-sm text-gray-600">Validan por riesgo o impacto relevante (legal, presupuesto). Pocos y bien definidos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rapid-card" style="border-color: var(--umine-navy);">
+                    <div class="flex gap-4">
+                        <div class="role-letter bg-umine-navy">P</div>
+                        <div>
+                            <h4 class="font-bold">Perform (Ejecutar)</h4>
+                            <p class="text-sm text-gray-600">Quien implementa la decisión. Su voz es vital para evitar fallos operativos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rapid-card" style="border-color: var(--umine-green);">
+                    <div class="flex gap-4">
+                        <div class="role-letter bg-umine-green">I</div>
+                        <div>
+                            <h4 class="font-bold">Input (Aportar)</h4>
+                            <p class="text-sm text-gray-600">Expertise clave. Aquí vive la redarquía: la influencia fluye por conocimiento, no por cargo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rapid-card" style="border-color: var(--umine-yellow);">
+                    <div class="flex gap-4">
+                        <div class="role-letter bg-umine-yellow">D</div>
+                        <div>
+                            <h4 class="font-bold">Decide (Decidir)</h4>
+                            <p class="text-sm text-gray-600">Una sola persona cierra, escucha e integra. Asume la responsabilidad final.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-red-50 text-umine-red rounded-xl text-sm font-bold border-l-4 border-umine-red">
+                Regla práctica: Si todos están en “A”, nadie decide.
+            </div>
+
+            <div class="mt-8 text-right">
+                <button onclick="showNext(2)" class="btn-umine">Mapear una decisión</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Activity -->
+        <div id="step-2" class="step-container hidden-step mb-12">
+            <h2 class="text-2xl font-bold mb-6">Actividad: Mapear desde la redarquía</h2>
+            <p class="mb-6 text-gray-600">Elige una decisión real de tu equipo y completa mentalmente (o anota) el mapa RAPID:</p>
+            
+            <div class="grid md:grid-cols-1 gap-4">
+                <div class="p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start pb-4 border-b border-gray-100">
+                            <span class="font-bold text-umine-blue">R —</span>
+                            <p class="text-sm">¿Quién puede ordenar mejor la propuesta inicial y las opciones?</p>
+                        </div>
+                        <div class="flex gap-4 items-start pb-4 border-b border-gray-100">
+                            <span class="font-bold text-umine-red">A —</span>
+                            <p class="text-sm">¿Qué riesgos requieren validación explícita y por parte de quién?</p>
+                        </div>
+                        <div class="flex gap-4 items-start pb-4 border-b border-gray-100">
+                            <span class="font-bold text-umine-navy">P —</span>
+                            <p class="text-sm">¿Quién ejecutará la decisión y con qué entregable concreto?</p>
+                        </div>
+                        <div class="flex gap-4 items-start pb-4 border-b border-gray-100">
+                            <span class="font-bold text-umine-green">I —</span>
+                            <p class="text-sm">¿Qué miradas expertas no pueden quedar fuera de la conversación?</p>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <span class="font-bold text-umine-yellow">D —</span>
+                            <p class="text-sm">¿Quién debería decidir por criterio y contexto?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-right">
+                <button onclick="showNext(3)" class="btn-umine">Chequeo de Coherencia</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Consistency Check -->
+        <div id="step-3" class="step-container hidden-step mb-12">
+            <h2 class="text-2xl font-bold mb-6">Chequeo de coherencia redárquica</h2>
+            <p class="mb-6 text-gray-600">Marca los puntos que se cumplen en tu mapeo actual:</p>
+            
+            <div class="space-y-3 mb-10">
+                <label class="check-box">
+                    <input type="checkbox" class="w-5 h-5 accent-umine-blue">
+                    <span class="text-sm">¿La decisión está lo más cerca posible del problema real?</span>
+                </label>
+                <label class="check-box">
+                    <input type="checkbox" class="w-5 h-5 accent-umine-blue">
+                    <span class="text-sm">¿La jerarquía está dando marco, no absorbiendo la decisión?</span>
+                </label>
+                <label class="check-box">
+                    <input type="checkbox" class="w-5 h-5 accent-umine-blue">
+                    <span class="text-sm">¿La persona que decide tiene expertise o contexto suficiente?</span>
+                </label>
+                <label class="check-box">
+                    <input type="checkbox" class="w-5 h-5 accent-umine-blue">
+                    <span class="text-sm">¿El equipo entiende quién decide y por qué?</span>
+                </label>
+            </div>
+
+            <div class="bg-umine-navy text-white p-8 rounded-[2rem] text-center">
+                <h3 class="text-2xl font-bold mb-4">Integración Final</h3>
+                <p class="text-gray-300 text-sm mb-6">
+                    La redarquía permite que la inteligencia colectiva emerja.<br>
+                    <strong>RAPID asegura que esa inteligencia se transforme en decisiones concretas.</strong>
+                </p>
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 text-xs">
+                    En el siguiente contenido veremos cómo sostener esta lógica sin caer en la difusión de responsabilidad.
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center pb-12 opacity-30 text-xs">
+            <p>© Umine - RAPID Redárquico</p>
+        </footer>
+    </div>
+
+    <script>
+        function showNext(step) {
+            const nextEl = document.getElementById(`step-${step}`);
+            nextEl.classList.remove('hidden-step');
+            nextEl.classList.add('visible-step');
+            
+            // Ocultar botón anterior
+            const prevStep = step - 1;
+            const prevBtn = document.querySelector(`#step-${prevStep} .btn-umine`);
+            if (prevBtn) prevBtn.style.display = 'none';
+
+            // Scroll suave
+            setTimeout(() => {
+                nextEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
