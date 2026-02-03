@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umine - Leer la Mezcla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --umine-navy: #1d2a4e;
+            --umine-blue: #00ade1;
+            --umine-yellow: #ffcd22;
+            --umine-green: #80b122;
+            --umine-red: #da3728;
+            --umine-purple: #575e9a;
+            --umine-grey: #ececec;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #fcfcfc;
+            color: var(--umine-navy);
+            scroll-behavior: smooth;
+        }
+
+        .bg-umine-navy { background-color: var(--umine-navy); }
+        .bg-umine-blue { background-color: var(--umine-blue); }
+        .bg-umine-yellow { background-color: var(--umine-yellow); }
+        .bg-umine-green { background-color: var(--umine-green); }
+        
+        .border-umine-blue { border-color: var(--umine-blue); }
+        .text-umine-blue { color: var(--umine-blue); }
+
+        .step-container {
+            transition: all 0.5s ease;
+        }
+
+        .reflection-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .reflection-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-step {
+            background-color: var(--umine-navy);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-step:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .hidden-step {
+            display: none;
+            opacity: 0;
+        }
+
+        .visible-step {
+            display: block;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .check-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--umine-blue);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+            <div>
+                <span class="text-sm font-bold tracking-widest text-umine-blue uppercase">Habilidades de Equipo</span>
+                <h1 class="text-3xl md:text-4xl font-bold mt-2">Leer la mezcla <span class="text-umine-blue">antes de decidir</span></h1>
+            </div>
+            <div class="bg-umine-navy text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                Actividad de Diagnóstico
+            </div>
+        </header>
+
+        <!-- Intro Summary -->
+        <section class="grid md:grid-cols-3 gap-4 mb-12">
+            <div class="p-4 bg-gray-50 rounded-xl border-t-4 border-umine-blue">
+                <p class="text-xs font-bold text-umine-blue mb-1 uppercase">Diversidad</p>
+                <p class="text-sm">Genera valor solo cuando los aportes están ordenados.</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-xl border-t-4 border-umine-yellow">
+                <p class="text-xs font-bold text-umine-yellow mb-1 uppercase">Miradas</p>
+                <p class="text-sm">Necesitamos perspectivas distintas, no una sola forma.</p>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-xl border-t-4 border-umine-green">
+                <p class="text-xs font-bold text-umine-green mb-1 uppercase">Fricción</p>
+                <p class="text-sm">La mezcla falla si operan supuestos invisibles.</p>
+            </div>
+        </section>
+
+        <!-- Step 1 -->
+        <div id="step-1" class="step-container">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-full bg-umine-blue text-white flex items-center justify-center font-bold">1</div>
+                <h2 class="text-2xl font-bold">Observar la mezcla en acción</h2>
+            </div>
+            
+            <div class="reflection-card">
+                <p class="mb-6 text-gray-700 font-medium italic">"Piensa en una decisión reciente de tu equipo (o en una discusión que se haya trabado)."</p>
+                <div class="space-y-4">
+                    <div class="check-item">
+                        <div class="check-circle"></div>
+                        <p>¿Qué tipo de aportes aparecieron primero?</p>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-circle"></div>
+                        <p>¿Alguna mirada intentó cerrar la decisión demasiado rápido?</p>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-circle"></div>
+                        <p>¿Hubo aportes que llegaron tarde… o que nunca llegaron?</p>
+                    </div>
+                </div>
+                <div class="mt-8 p-4 bg-blue-50 text-umine-navy rounded-xl text-sm border-l-4 border-umine-blue">
+                    <strong>Nota:</strong> Muchas fricciones no aparecen por <i>qué</i> se dice, sino por <i>cuándo</i> entra cada perspectiva.
+                </div>
+            </div>
+            <button onclick="showNext(2)" class="btn-step">Continuar al Paso 2</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="step-2" class="step-container hidden-step">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-full bg-umine-purple text-white flex items-center justify-center font-bold">2</div>
+                <h2 class="text-2xl font-bold">Detectar interferencias silenciosas</h2>
+            </div>
+            
+            <div class="reflection-card border-umine-purple">
+                <p class="mb-6 text-gray-700 font-medium italic">"Vuelve a esa misma situación y pregúntate:"</p>
+                <div class="space-y-4">
+                    <div class="check-item">
+                        <div class="check-circle" style="border-color: var(--umine-purple);"></div>
+                        <p>¿Qué se estaba dando por hecho sin cuestionar?</p>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-circle" style="border-color: var(--umine-purple);"></div>
+                        <p>¿Alguna perspectiva fue descartada con frases como “eso frena” o “ya lo vimos”?</p>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-circle" style="border-color: var(--umine-purple);"></div>
+                        <p>¿Qué mirada habría cambiado la decisión si hubiera tenido espacio?</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-sm text-umine-purple font-semibold">Estas son las impurezas invisibles de la mezcla: no se discuten, pero deciden.</p>
+            </div>
+            <button onclick="showNext(3)" class="btn-step">Ver Micro-herramienta</button>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="step-3" class="step-container hidden-step">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 rounded-full bg-umine-green text-white flex items-center justify-center font-bold">3</div>
+                <h2 class="text-2xl font-bold">Micro-herramienta: Pausa de mezcla</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border-2 border-umine-green shadow-xl mb-8">
+                <p class="text-gray-600 mb-8">Antes de una decisión relevante, introduce una pausa breve con estas tres preguntas:</p>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-green-50 text-umine-green rounded-xl flex items-center justify-center text-2xl mb-3">👁️</div>
+                        <p class="font-bold text-sm">¿Qué miradas ya aportaron?</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-green-50 text-umine-green rounded-xl flex items-center justify-center text-2xl mb-3">👂</div>
+                        <p class="font-bold text-sm">¿Cuál falta escuchar todavía?</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-green-50 text-umine-green rounded-xl flex items-center justify-center text-2xl mb-3">⚖️</div>
+                        <p class="font-bold text-sm">¿Estamos mezclando exploración y ejecución?</p>
+                    </div>
+                </div>
+
+                <p class="mt-10 text-center font-bold text-umine-green border-t border-gray-100 pt-6">
+                    No es para debatir más. Es para ordenar la conversación antes de seguir.
+                </p>
+            </div>
+            <button onclick="showNext(4)" class="btn-step">Finalizar Integración</button>
+        </div>
+
+        <!-- Step 4 / Integración -->
+        <div id="step-4" class="step-container hidden-step">
+            <div class="bg-umine-navy text-white p-10 rounded-[3rem] shadow-2xl mb-12 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold mb-6">Integración</h2>
+                    <p class="text-gray-300 mb-10">Cuando el equipo aprende a leer la mezcla:</p>
+                    
+                    <ul class="space-y-6 text-left max-w-2xl mx-auto mb-10">
+                        <li class="flex items-start gap-4">
+                            <span class="text-umine-blue text-2xl">✦</span>
+                            <p>Las diferencias dejan de vivirse como choques personales.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-umine-blue text-2xl">✦</span>
+                            <p>Los perfiles dejan de competir entre sí.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-umine-blue text-2xl">✦</span>
+                            <p>Las decisiones ganan calidad sin volverse más lentas.</p>
+                        </li>
+                    </ul>
+
+                    <div class="p-6 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
+                        <p class="text-xl font-semibold">La diversidad empieza a trabajar a favor, no en contra.</p>
+                    </div>
+                    <p class="mt-8 text-sm text-gray-400">Has completado la actividad.</p>
+                </div>
+                <!-- Decoration -->
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-umine-blue/20 rounded-full"></div>
+            </div>
+        </div>
+
+        <footer class="text-center pb-12 opacity-30 text-xs">
+            <p>© Umine - Leer la mezcla antes de decidir</p>
+        </footer>
+    </div>
+
+    <script>
+        function showNext(step) {
+            const nextEl = document.getElementById(`step-${step}`);
+            nextEl.classList.remove('hidden-step');
+            nextEl.classList.add('visible-step');
+            
+            // Hide the button of the previous step if exists
+            const prevStep = step - 1;
+            const prevBtn = document.querySelector(`#step-${prevStep} .btn-step`);
+            if (prevBtn) prevBtn.style.display = 'none';
+
+            // Scroll smoothly
+            setTimeout(() => {
+                nextEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
